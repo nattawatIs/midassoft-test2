@@ -1,7 +1,3 @@
-let start = "d6";
-let target = "h8";
-let brokentiles = ["f6", "f7"];
-
 function getMinMove(start, target, brokenTiles) {
   const horseMove = [
     [1, 2],
@@ -16,7 +12,6 @@ function getMinMove(start, target, brokenTiles) {
 
   const letters = "abcdefgh".split("");
 
-  // แปลงตำแหน่งเป็บ array d6 => [3,5]
   function toArray(pos) {
     const row = parseInt(pos[1]) - 1;
     const col = letters.indexOf(pos[0]);
@@ -30,10 +25,8 @@ function getMinMove(start, target, brokenTiles) {
     brokenSet.add(`${x},${y}`);
   }
 
-  console.log(brokenSet);
-
-  const [startX, startY] = toArray(start); // [3,5]
-  const [targetX, targetY] = toArray(target); // [7,7]
+  const [startX, startY] = toArray(start);
+  const [targetX, targetY] = toArray(target);
 
   const queue = [{ x: startX, y: startY, moves: 0 }];
   const visited = new Set([`${startX},${startY}`]);
